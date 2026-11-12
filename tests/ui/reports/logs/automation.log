@@ -1,0 +1,8 @@
+2026-11-12 22:58:08,079 - pages.base_page - INFO - Navigating to /
+2026-11-12 22:58:09,066 - pages.base_page - INFO - Entering value into input
+2026-11-12 22:58:09,828 - pages.base_page - INFO - Entering value into input
+2026-11-12 22:58:10,559 - pages.base_page - INFO - Clicking on element with locator: <Locator frame=<Frame name= url='https://www.saucedemo.com/'> selector='internal:role=button[name="Login"i]'>
+2026-11-12 22:58:11,536 - pages.base_page - INFO - Navigating to /
+2026-11-12 22:58:12,438 - pages.base_page - INFO - Entering value into input
+2026-11-12 22:58:13,189 - pages.base_page - INFO - Entering value into input
+2026-11-12 22:58:13,916 - pages.base_page - INFO - Clicking on element with locator: <Locator frame=<Frame name= url='https://www.saucedemo.com/'> selector='internal:role=button[name="Login"i]'>
