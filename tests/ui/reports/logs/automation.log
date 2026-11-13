@@ -1,8 +1,16 @@
-2026-11-12 22:58:08,079 - pages.base_page - INFO - Navigating to /
-2026-11-12 22:58:09,066 - pages.base_page - INFO - Entering value into input
-2026-11-12 22:58:09,828 - pages.base_page - INFO - Entering value into input
-2026-11-12 22:58:10,559 - pages.base_page - INFO - Clicking on element with locator: <Locator frame=<Frame name= url='https://www.saucedemo.com/'> selector='internal:role=button[name="Login"i]'>
-2026-11-12 22:58:11,536 - pages.base_page - INFO - Navigating to /
-2026-11-12 22:58:12,438 - pages.base_page - INFO - Entering value into input
-2026-11-12 22:58:13,189 - pages.base_page - INFO - Entering value into input
-2026-11-12 22:58:13,916 - pages.base_page - INFO - Clicking on element with locator: <Locator frame=<Frame name= url='https://www.saucedemo.com/'> selector='internal:role=button[name="Login"i]'>
+2026-11-13 12:29:00,313 - pages.base_page - INFO - Navigating to /
+2026-11-13 12:29:01,450 - pages.base_page - INFO - Entering value into input
+2026-11-13 12:29:02,207 - pages.base_page - INFO - Entering value into input
+2026-11-13 12:29:02,931 - pages.base_page - INFO - Clicking on element with locator: <Locator frame=<Frame name= url='https://www.saucedemo.com/'> selector='internal:role=button[name="Login"i]'>
+2026-11-13 12:29:04,011 - pages.base_page - INFO - Navigating to /
+2026-11-13 12:29:05,018 - pages.base_page - INFO - Entering value into input
+2026-11-13 12:29:05,777 - pages.base_page - INFO - Entering value into input
+2026-11-13 12:29:06,494 - pages.base_page - INFO - Clicking on element with locator: <Locator frame=<Frame name= url='https://www.saucedemo.com/'> selector='internal:role=button[name="Login"i]'>
+2026-11-13 12:29:07,555 - pages.base_page - INFO - Navigating to /
+2026-11-13 12:29:08,554 - pages.base_page - INFO - Entering value into input
+2026-11-13 12:29:09,308 - pages.base_page - INFO - Entering value into input
+2026-11-13 12:29:10,036 - pages.base_page - INFO - Clicking on element with locator: <Locator frame=<Frame name= url='https://www.saucedemo.com/'> selector='internal:role=button[name="Login"i]'>
+2026-11-13 12:29:11,854 - pages.base_page - INFO - Navigating to /
+2026-11-13 12:29:12,862 - pages.base_page - INFO - Entering value into input
+2026-11-13 12:29:13,619 - pages.base_page - INFO - Entering value into input
+2026-11-13 12:29:14,349 - pages.base_page - INFO - Clicking on element with locator: <Locator frame=<Frame name= url='https://www.saucedemo.com/'> selector='internal:role=button[name="Login"i]'>

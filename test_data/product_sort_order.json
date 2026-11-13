@@ -1,0 +1,12 @@
+[
+    {
+      "sort_option": "lohi",
+      "description": "Price low to high",
+      "expected_order": "ascending"
+    },
+    {
+      "sort_option": "hilo",
+      "description": "Price high to low",
+      "expected_order": "descending"
+    }
+  ]

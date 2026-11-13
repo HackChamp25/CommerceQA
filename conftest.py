@@ -1,9 +1,11 @@
 import pytest
 
+from pages import login_page
 from playwright.sync_api import sync_playwright
 
 from config.setting import Settings
 from utils.logger import configure_logging
+from pages.login_page import LoginPage
 
 configure_logging()
 
@@ -86,3 +88,12 @@ def pytest_runtest_makereport(item, call):
             print(
                 f"Screenshot saved: {screenshot_path}"
             )
+
+@pytest.fixture()
+def authenticated_page(page):
+    login_page = LoginPage(page)
+    login_page.navigate()
+    login_page.login("standard_user", "secret_sauce")
+    yield page
+
+

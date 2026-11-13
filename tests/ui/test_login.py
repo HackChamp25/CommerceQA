@@ -1,8 +1,12 @@
 import pytest
 from playwright.sync_api import Page, expect
 from pages.login_page import LoginPage
+from utils.test_data_reader import load_test_data
+
+login_test_data = load_test_data("login_data.json")
 
 @pytest.mark.ui
+@pytest.mark.smoke
 def test_valid_user_login(page: Page):
     login = LoginPage(page)
     login.navigate()
@@ -12,8 +16,10 @@ def test_valid_user_login(page: Page):
 
 @pytest.mark.ui
 @pytest.mark.regression
-def test_invalid_user_login(page: Page):
+@pytest.mark.parametrize("test_data", login_test_data, ids=["invalid_user","locked_user"])
+def test_invalid_user_login(page: Page,test_data):
     login = LoginPage(page)
     login.navigate()
-    login.login("invalid_user", "invalid_password")
-    login.verify_error_message("Epic sadface: Username and password do not match any user in this service")
+    login.login(test_data["username"], test_data["password"])
+    login.verify_error_message(test_data["expected_error"])
+    
