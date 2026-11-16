@@ -1,5 +1,4 @@
 import pytest
-from playwright.sync_api import Page, expect
 
 from pages.products_page import ProductPage
 from utils.test_data_reader import load_test_data

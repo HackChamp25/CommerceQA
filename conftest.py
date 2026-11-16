@@ -1,11 +1,10 @@
+import allure
 import pytest
-
-from pages import login_page
 from playwright.sync_api import sync_playwright
 
 from config.setting import Settings
-from utils.logger import configure_logging
 from pages.login_page import LoginPage
+from utils.logger import configure_logging
 
 configure_logging()
 
@@ -34,13 +33,34 @@ def browser(playwright_instance):
     yield browser
     browser.close() 
 
+from pathlib import Path
+
+
 @pytest.fixture(scope="function")
-def context(browser):
+def context(browser, request):
     """Create a new browser context for each test function"""
     settings = Settings()
-    context = browser.new_context(base_url=settings.base_url)
+    artifact_dir = Path("reports/playwright") / request.node.name.replace("[", "_").replace("]", "_")
+    artifact_dir.mkdir(parents=True, exist_ok=True)
+    request.node._playwright_artifact_dir = artifact_dir
+
+    context = browser.new_context(
+        base_url=settings.base_url,
+        record_video_dir=str(artifact_dir),
+    )
     context.set_default_timeout(settings.default_timeout)
+    context.tracing.start(screenshots=True, snapshots=True, sources=True)
     yield context
+
+    failed = getattr(request.node, "rep_call", None) and request.node.rep_call.failed
+    if failed:
+        trace_path = artifact_dir / "trace.zip"
+        context.tracing.stop(path=str(trace_path))
+        print(f"Playwright trace saved: {trace_path}")
+        print(f"Open with: .\\venv\\Scripts\\playwright.exe show-trace {trace_path}")
+    else:
+        context.tracing.stop()
+
     context.close()
 
 @pytest.fixture(scope="function")
@@ -52,18 +72,16 @@ def page(context):
     page.close()
 
 
-from pathlib import Path
-
-
 @pytest.hookimpl(hookwrapper=True)
 def pytest_runtest_makereport(item, call):
 
     outcome = yield
     report = outcome.get_result()
+    setattr(item, f"rep_{report.when}", report)
 
     if report.when == "call" and report.failed:
 
-        page = item.funcargs.get("page")
+        page = item.funcargs.get("page") or item.funcargs.get("authenticated_page")
 
         if page:
 
@@ -85,6 +103,12 @@ def pytest_runtest_makereport(item, call):
                 full_page=True
             )
 
+            allure.attach(
+                page.screenshot(full_page=True),
+                name=f"{item.name}_failure",
+                attachment_type=allure.attachment_type.PNG,
+            )
+
             print(
                 f"Screenshot saved: {screenshot_path}"
             )
@@ -97,3 +121,26 @@ def authenticated_page(page):
     yield page
 
 
+from api_clients.booking_api import BookingAPI
+
+@pytest.fixture
+def booking_api():
+    settings = Settings()
+    client = BookingAPI(settings.api_base_url, settings.api_timeout)
+    yield client
+    client.close()
+
+@pytest.fixture
+def authenticated_booking_api(booking_api):
+
+    response = booking_api.authenticate(
+        "admin",
+        "password123"
+    )
+
+    assert response.status_code == 200
+
+    token = response.json()["token"]
+    booking_api.set_auth_token(token)
+
+    return booking_api

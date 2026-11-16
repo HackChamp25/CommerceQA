@@ -1,6 +1,7 @@
 import logging
 from pathlib import Path
 
+
 def configure_logging():
     log_directory = Path("reports/logs")
     log_directory.mkdir(parents=True, exist_ok=True)

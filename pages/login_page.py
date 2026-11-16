@@ -1,5 +1,7 @@
 from playwright.sync_api import Page, expect
+
 from pages.base_page import basePage
+
 
 class LoginPage(basePage):
     def __init__(self, page:Page):

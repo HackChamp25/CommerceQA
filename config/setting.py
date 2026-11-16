@@ -13,3 +13,5 @@ class Settings:
         self.headless = headless.strip().lower() in {"1", "true", "yes", "on"}
         self.slow_mo = int(os.getenv("SLOW_MO", "0"))
         self.default_timeout = int(os.getenv("DEFAULT_TIMEOUT", "10000"))
+        self.api_base_url = os.getenv("API_BASE_URL", "https://restful-booker.herokuapp.com")
+        self.api_timeout = int(os.getenv("API_TIMEOUT", "15"))

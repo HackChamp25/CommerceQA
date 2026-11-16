@@ -1,9 +1,16 @@
+# Allure / reports / runtime artifacts
+allure-results/
+allure-report/
+**/allure-results/
+**/allure-report/
+reports/
+**/reports/
+test-results/
+playwright-report/
+
+# Python
 venv/
 .env
 __pycache__/
 *.pyc
 .pytest_cache/
-test-results/
-playwright-report/
-reports/logs/
-reports/screenshots/
