@@ -2,9 +2,9 @@ name: CommerceQA CI
 
 on:
   push:
-    branches: [main]
+    branches: [master]
   pull_request:
-    branches: [main]
+    branches: [master]
 
 jobs:
   quality-and-api-tests:
