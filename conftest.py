@@ -123,6 +123,7 @@ def authenticated_page(page):
 
 from api_clients.booking_api import BookingAPI
 
+
 @pytest.fixture
 def booking_api():
     settings = Settings()
