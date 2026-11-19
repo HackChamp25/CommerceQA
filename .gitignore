@@ -14,3 +14,11 @@ venv/
 __pycache__/
 *.pyc
 .pytest_cache/
+.coverage
+.coverage.*
+htmlcov/
+
+# Local-only / scratch (do not commit)
+conftest_sanas.py
+learn.py
+tests/ui/test_playwright_failure_demo.py

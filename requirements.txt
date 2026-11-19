@@ -21,3 +21,5 @@ allure-pytest==2.16.2
 allure-python-commons==2.16.2
 pydantic==2.14.3
 ruff==0.17.5
+coverage==7.17.3
+pytest-cov==7.1.0
